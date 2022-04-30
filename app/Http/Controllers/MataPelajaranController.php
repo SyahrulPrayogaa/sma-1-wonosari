@@ -14,7 +14,8 @@ class MataPelajaranController extends Controller
      */
     public function index()
     {
-        //
+        $mataPelajaran = MataPelajaran::all();
+        return view('admin.mata-pelajaran.index', ['mataPelajaran' => $mataPelajaran]);
     }
 
     /**
