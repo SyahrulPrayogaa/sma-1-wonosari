@@ -18,9 +18,9 @@ class CreateSiswasTable extends Migration
             $table->string('nama');
             $table->string('tempat_lahir');
             $table->date('tanggal_lahir');
-            $table->string('jenis_kelamin');
-            $table->string('nis');
-            $table->string('nisn');
+            $table->char('jenis_kelamin', 1);
+            $table->char('nis', 4);
+            $table->char('nisn', 10)->unique();
             $table->string('jurusan');
             $table->string('nama_wali');
             $table->integer('tahun_masuk');
