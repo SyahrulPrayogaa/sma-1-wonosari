@@ -54,7 +54,7 @@
                     </a>
                 </li> --}}
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('daftar-siswa') }}" class="nav-link">
                         <i class="nav-icon fas fa-user-graduate"></i>
                         <p>Daftar Siswa</p>
                     </a>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\MataPelajaranController;
+use App\Http\Controllers\SiswaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,4 +22,5 @@ Route::get('/admin', function () {
     return view('dashboard');
 });
 
+Route::get('/admin/daftar-siswa', [SiswaController::class, 'index'])->name('daftar-siswa');
 Route::get('/admin/mata-pelajaran', [MataPelajaranController::class, 'index'])->name('mata-pelajaran');
