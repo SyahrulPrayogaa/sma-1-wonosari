@@ -22,5 +22,12 @@ Route::get('/admin', function () {
     return view('dashboard');
 });
 
-Route::get('/admin/daftar-siswa', [SiswaController::class, 'index'])->name('daftar-siswa');
+Route::get('/admin/daftar-siswa', [SiswaController::class, 'index'])->name('siswa.index');
+Route::get('/admin/daftar-siswa/create', [SiswaController::class, 'create'])->name('siswa.create');
+Route::post('/admin/daftar-siswa', [SiswaController::class, 'store'])->name('siswa.store');
+Route::get('/admin/daftar-siswa/{siswa}/edit', [SiswaController::class, 'edit'])->name('siswa.edit');
+Route::patch('/admin/daftar-siswa/{siswa}', [SiswaController::class, 'update'])->name('siswa.update');
+Route::delete('/admin/daftar-siswa/{siswa}', [SiswaController::class, 'destroy'])->name('siswa.destroy');
+
+
 Route::get('/admin/mata-pelajaran', [MataPelajaranController::class, 'index'])->name('mata-pelajaran');

@@ -25,7 +25,7 @@ class SiswaController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.siswa.create');
     }
 
     /**
@@ -36,7 +36,20 @@ class SiswaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validateData = $request->validate([
+            'nama' => 'required|min:3|max:50',
+            'tempat_lahir' => 'required',
+            'tanggal_lahir' => 'required',
+            'jenis_kelamin' => 'required|in:P,L',
+            'nis' => 'required|size:4',
+            'nisn' => 'required|size:10|unique:siswas,nisn',
+            'jurusan' => 'required',
+            'nama_wali' => '',
+            'tahun_masuk' => '',
+            'tahun_lulus' => '',
+        ]);
+        Siswa::create($validateData);
+        return redirect()->route('siswa.index');
     }
 
     /**
@@ -58,7 +71,7 @@ class SiswaController extends Controller
      */
     public function edit(Siswa $siswa)
     {
-        //
+        return view('admin.siswa.edit', ['siswa' => $siswa]);
     }
 
     /**
@@ -70,7 +83,21 @@ class SiswaController extends Controller
      */
     public function update(Request $request, Siswa $siswa)
     {
-        //
+        $validateData = $request->validate([
+            'nama' => 'required|min:3|max:50',
+            'tempat_lahir' => 'required',
+            'tanggal_lahir' => 'required',
+            'jenis_kelamin' => 'required|in:P,L',
+            'nis' => 'required|size:4',
+            'nisn' => 'required|size:10|unique:siswas,nisn,' . $siswa->id,
+            'jurusan' => 'required',
+            'nama_wali' => '',
+            'tahun_masuk' => '',
+            'tahun_lulus' => '',
+        ]);
+
+        Siswa::where('id', $siswa->id)->update($validateData);
+        return redirect()->route('siswa.index');
     }
 
     /**
@@ -81,6 +108,7 @@ class SiswaController extends Controller
      */
     public function destroy(Siswa $siswa)
     {
-        //
+        $siswa->delete();
+        return redirect()->route('siswa.index')->with('pesan', "Hapus data $siswa->nama berhasil");
     }
 }

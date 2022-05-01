@@ -22,9 +22,9 @@ class CreateSiswasTable extends Migration
             $table->char('nis', 4);
             $table->char('nisn', 10)->unique();
             $table->string('jurusan');
-            $table->string('nama_wali');
-            $table->integer('tahun_masuk');
-            $table->integer('tahun_lulus');
+            $table->string('nama_wali')->nullable();
+            $table->integer('tahun_masuk')->nullable();
+            $table->integer('tahun_lulus')->nullable();
             $table->timestamps();
         });
     }
