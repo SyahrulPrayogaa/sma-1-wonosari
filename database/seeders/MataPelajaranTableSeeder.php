@@ -130,6 +130,61 @@ class MataPelajaranTableSeeder extends Seeder
                 'slug' => 'Geografi',
                 'kategori' => 'C',
                 'jurusan' => 'ips'
+            ], [
+                // 'id' => '11',
+                'mata_pelajaran' => 'Matematika',
+                'slug' => 'Matematika',
+                'kategori' => 'LM',
+                'jurusan' => 'ipa'
+            ],
+            [
+                // 'id' => '12',
+                'mata_pelajaran' => 'Biologi',
+                'slug' => 'Biologi',
+                'kategori' => 'LM',
+                'jurusan' => 'ipa'
+            ],
+            [
+                // 'id' => '13',
+                'mata_pelajaran' => 'Fisika',
+                'slug' => 'Fisika',
+                'kategori' => 'LM',
+                'jurusan' => 'ipa'
+            ],
+            [
+                // 'id' => '14',
+                'mata_pelajaran' => 'Kimia',
+                'slug' => 'Kimia',
+                'kategori' => 'LM',
+                'jurusan' => 'ipa'
+            ],
+            [
+                // 'id' => '15',
+                'mata_pelajaran' => 'Sejarah Peminatan',
+                'slug' => 'Sejarah Peminatan',
+                'kategori' => 'LM',
+                'jurusan' => 'ips'
+            ],
+            [
+                // 'id' => '16',
+                'mata_pelajaran' => 'Ekonomi',
+                'slug' => 'Ekonomi',
+                'kategori' => 'LM',
+                'jurusan' => 'ips'
+            ],
+            [
+                // 'id' => '17',
+                'mata_pelajaran' => 'Sosiologi',
+                'slug' => 'Sosiologi',
+                'kategori' => 'LM',
+                'jurusan' => 'ips'
+            ],
+            [
+                // 'id' => '18',
+                'mata_pelajaran' => 'Geografi',
+                'slug' => 'Geografi',
+                'kategori' => 'LM',
+                'jurusan' => 'ips'
             ],
         ];
         foreach ($mataPelajaran as $key => $value) {

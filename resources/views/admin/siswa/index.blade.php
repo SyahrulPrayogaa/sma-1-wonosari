@@ -23,14 +23,14 @@
                         <th>Nisn</th>
                         <th>Jurusan</th>
                         <th>Nama Orang Tua/ Wali</th>
-                        <th>Tahun Masuk</th>
-                        <th>Tahun Lulus</th>
+                        {{-- <th>Tahun Masuk</th>
+                        <th>Tahun Lulus</th> --}}
                         <th style="width: 40px" colspan="2" class="text-center">Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     @forelse ($siswas as $siswa)
-                        <tr>
+                        <tr style='white-space: nowrap'>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $siswa->nama }}</td>
                             <td>{{ $siswa->tempat_lahir }}, {{ $siswa->tanggal_lahir }}</td>
@@ -39,18 +39,19 @@
                             <td>{{ $siswa->nisn }}</td>
                             <td class="text-uppercase">{{ $siswa->jurusan }}</td>
                             <td>{{ $siswa->nama_wali }}</td>
-                            <td>{{ $siswa->tahun_masuk }}</td>
-                            <td>{{ $siswa->tahun_lulus }}</td>
-                            <td><a href="{{ route('siswa.edit', ['siswa' => $siswa->id]) }}"
-                                    class="btn btn-sm btn-warning" title="Edit"><i class="fas fa-edit"></i></a>
-                            </td>
-                            <td>
+                            {{-- <td>{{ $siswa->tahun_masuk }}</td>
+                            <td>{{ $siswa->tahun_lulus }}</td> --}}
+                            <td class="btn-group" role="group">
+                                <a href="{{ route('siswa.edit', ['siswa' => $siswa->id]) }}"
+                                    class="btn btn-sm btn-warning mr-2" title="Edit"><i class="fas fa-edit"></i></a>
                                 <form action="{{ route('siswa.destroy', ['siswa' => $siswa->id]) }}" method="POST">
                                     @method('DELETE')
                                     @csrf
-                                    <button class="btn btn-sm btn-danger" title="Hapus"><i
+                                    <button class="btn btn-sm btn-danger mr-2" title="Hapus"><i
                                             class="fas fa-trash"></i></button>
                                 </form>
+                                <a href="{{ route('siswa.nilai.index', ['siswa' => $siswa->id]) }}"
+                                    class="btn btn-sm btn-success" title="Daftar Nilai"><i class="fas fa-edit"></i></a>
                             </td>
                         </tr>
                     @empty

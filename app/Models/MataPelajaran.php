@@ -9,4 +9,9 @@ class MataPelajaran extends Model
 {
     use HasFactory;
     protected $fillable = ['mata_pelajaran', 'kategori', 'jurusan'];
+
+    public function siswas()
+    {
+        return $this->belongsToMany('App\models\Siswa')->withPivot('nilai');
+    }
 }
