@@ -35,7 +35,9 @@
                     </tr>
                 </tbody>
             </table>
-            {{-- <a href="{{ route('siswa.create') }}" class="btn btn-primary mb-3">Tambah Siswa</a> --}}
+            <div class="btn-group">
+                <a href="{{ route('siswa.nilai.edit', ['siswa' => $siswa->id]) }}" class="btn btn-primary mb-3">Edit Nilai</a>
+            </div>
             <table class="table table-bordered">
                 <thead>
                     <tr class="text-center">

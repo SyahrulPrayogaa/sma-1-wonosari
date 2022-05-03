@@ -12,7 +12,7 @@
 
         <div class="card-body">
             <a href="{{ route('siswa.create') }}" class="btn btn-primary mb-3">Tambah Siswa</a>
-            <table class="table table-bordered">
+            <table class="table table-bordered table-responsive">
                 <thead>
                     <tr>
                         <th style="width: 10px">No</th>

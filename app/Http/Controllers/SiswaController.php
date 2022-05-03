@@ -95,4 +95,40 @@ class SiswaController extends Controller
         $siswa = Siswa::where('id', $siswa->id)->first();
         return view('admin.siswa.nilai.index', ['siswa' => $siswa]);
     }
+
+    public function editNilai(Siswa $siswa)
+    {
+        $siswa = Siswa::where('id', $siswa->id)->first();
+        $matpel = MataPelajaran::where('kategori', 'LM')->where('jurusan', '!=', $siswa->jurusan)->get();
+        return view('admin.siswa.nilai.edit', ['siswa' => $siswa, 'matpels' => $matpel]);
+    }
+
+    public function updateNilai(Request $request, Siswa $siswa)
+    {
+        $peminatan = $request->peminatan;
+        // $matpel = MataPelajaran::find([$peminatan]);
+        // $siswa->matapelajarans()->attach($matpel);
+
+        foreach ($siswa->matapelajarans as $mapel) {
+            if ($mapel->kategori == 'LM') {
+                if ($mapel->id != $peminatan) {
+                    $matpelLama = MataPelajaran::find([$mapel->id]);
+                    $siswa->matapelajarans()->detach($matpelLama);
+
+                    $matpelBaru = MataPelajaran::find([$peminatan]);
+                    $siswa->matapelajarans()->attach($matpelBaru);
+                    // mengisi nilai form kedalam pivot table
+                    $id = 'mapel_' . $mapel->id;
+                    $siswa->matapelajarans()->updateExistingPivot($peminatan, ['nilai' => $request->$id]);
+                }
+            }
+        }
+
+        foreach ($siswa->matapelajarans as $mapel) {
+            $id = 'mapel_' . $mapel->id;
+            $siswa->matapelajarans()->updateExistingPivot($mapel->id, ['nilai' => $request->$id]);
+        }
+
+        return redirect()->route('siswa.nilai.index', ['siswa' => $siswa->id]);
+    }
 }

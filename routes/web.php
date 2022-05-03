@@ -30,5 +30,7 @@ Route::patch('/admin/daftar-siswa/{siswa}', [SiswaController::class, 'update'])-
 Route::delete('/admin/daftar-siswa/{siswa}', [SiswaController::class, 'destroy'])->name('siswa.destroy');
 
 Route::get('/admin/daftar-siswa/{siswa}/nilai', [SiswaController::class, 'nilai'])->name('siswa.nilai.index');
+Route::get('/admin/daftar-siswa/{siswa}/nilai/edit', [SiswaController::class, 'editNilai'])->name('siswa.nilai.edit');
+Route::patch('/admin/daftar-siswa/{siswa}/nilai', [SiswaController::class, 'updateNilai'])->name('siswa.nilai.update');
 
 Route::get('/admin/mata-pelajaran', [MataPelajaranController::class, 'index'])->name('mata-pelajaran');
