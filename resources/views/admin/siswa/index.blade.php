@@ -11,7 +11,21 @@
         </div> --}}
 
         <div class="card-body">
-            <a href="{{ route('siswa.create') }}" class="btn btn-primary mb-3">Tambah Siswa</a>
+            <div class="container">
+                <div class="row justify-content-between">
+                    <div class="col">
+                        <a href="{{ route('siswa.create') }}" class="btn btn-primary">Tambah Siswa</a>
+                    </div>
+                    <div class="col">
+                        <form action="{{ route('siswa.search') }}" method="GET" class="form-inline">
+                            @csrf
+                            <input type="text" class="form-control w-75" id="search" name="search"
+                                placeholder="Nama Siswa / NISN" value="{{ $search ?? '' }}">
+                            <button type="submit" class="btn btn-primary w-25"><i class="fas fa-search"></i> Cari</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
             <table class="table table-responsive">
                 <thead>
                     <tr>

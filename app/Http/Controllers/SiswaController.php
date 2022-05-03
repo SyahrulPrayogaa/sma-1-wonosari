@@ -89,6 +89,11 @@ class SiswaController extends Controller
         return redirect()->route('siswa.index')->with('pesan', "Hapus data $siswa->nama berhasil");
     }
 
+    public function search(Request $request)
+    {
+        $result = Siswa::where('nama', 'LIKE', '%' . $request->search . '%')->orWhere('nisn', 'LIKE', '%' . $request->search . '%')->orderBy('nama')->paginate(10);
+        return view('admin.siswa.index', ['siswas' => $result, 'search' => $request->search]);
+    }
 
     public function nilai(Siswa $siswa)
     {
