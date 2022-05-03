@@ -22,7 +22,7 @@ class SiswaTableSeeder extends Seeder
         $jurusan = ['ipa', 'ips'];
         $jk = ['L', 'P'];
 
-        for ($i = 0; $i < 3; $i++) {
+        for ($i = 0; $i < 10; $i++) {
             Siswa::create(
                 [
                     'nama' => $faker->name,

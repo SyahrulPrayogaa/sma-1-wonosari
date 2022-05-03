@@ -12,7 +12,7 @@
 
         <div class="card-body">
             <a href="{{ route('siswa.create') }}" class="btn btn-primary mb-3">Tambah Siswa</a>
-            <table class="table table-bordered table-responsive">
+            <table class="table table-responsive">
                 <thead>
                     <tr>
                         <th style="width: 10px">No</th>
@@ -43,15 +43,16 @@
                             <td>{{ $siswa->tahun_lulus }}</td> --}}
                             <td class="btn-group" role="group">
                                 <a href="{{ route('siswa.edit', ['siswa' => $siswa->id]) }}"
-                                    class="btn btn-sm btn-warning mr-2" title="Edit"><i class="fas fa-edit"></i></a>
+                                    class="btn btn-sm btn-warning mr-2" title="Edit"><i class="fas fa-pen"></i></a>
+                                <a href="{{ route('siswa.nilai.index', ['siswa' => $siswa->id]) }}"
+                                    class="btn btn-sm btn-success mr-2" title="Daftar Nilai"><i
+                                        class="fas fa-archive"></i></a>
                                 <form action="{{ route('siswa.destroy', ['siswa' => $siswa->id]) }}" method="POST">
                                     @method('DELETE')
                                     @csrf
-                                    <button class="btn btn-sm btn-danger mr-2" title="Hapus"><i
+                                    <button class="btn btn-sm btn-danger " title="Hapus"><i
                                             class="fas fa-trash"></i></button>
                                 </form>
-                                <a href="{{ route('siswa.nilai.index', ['siswa' => $siswa->id]) }}"
-                                    class="btn btn-sm btn-success" title="Daftar Nilai"><i class="fas fa-edit"></i></a>
                             </td>
                         </tr>
                     @empty
@@ -61,14 +62,10 @@
             </table>
         </div>
 
-        {{-- <div class="card-footer clearfix">
-            <ul class="pagination pagination-sm m-0 float-right">
-                <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
-            </ul>
-        </div> --}}
+        <div class="card-footer clearfix">
+            <div class="float-right">
+                {{ $siswas->onEachSide(1)->links() }}
+            </div>
+        </div>
     </div>
 @endsection
