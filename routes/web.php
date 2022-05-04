@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\MataPelajaranController;
+use App\Http\Controllers\PengumumanController;
 use App\Http\Controllers\SiswaController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,6 +19,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('landing-page');
 });
+Route::get('/pengumuman', [PengumumanController::class, 'index'])->name('pengumuman.index');
+
+
 Route::get('/admin', function () {
     return view('dashboard');
 });

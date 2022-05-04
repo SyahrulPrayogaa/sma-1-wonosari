@@ -51,18 +51,22 @@
                         <div class="card-body text-center">
                             <div class="logo p-3 mb-3">
                                 <img src="{{ asset('img/Logo_Kemendikbud.svg') }}" alt="" srcset="" width="100">
-                                <img src="{{ asset('img/logo.png') }}" alt="" srcset="" width="100">
+                                {{-- <img src="{{ asset('img/logo.png') }}" alt="" srcset="" width="100"> --}}
                             </div>
                             <h1 class="text-center text-uppercase fs-1 p-3 mb-3" style=" font-weight:bolder">
                                 Pengumuman Kelulusan SMA 1 Wonosari
                             </h1>
                             {{-- <h5 class="text-left text-black-50">Masukkan NISN anda.</h5> --}}
                             {{-- <label for="nisn" class="form-label mt-3">NISN</label> --}}
-                            <div class="input-group mb-3 px-5">
-                                <input type="text" class="form-control" id="nisn" aria-describedby="basic-addon3"
-                                    placeholder="Masukkan 10 digit NISN anda">
-                            </div>
-                            <div class="btn btn-primary mt-2">LIHAT HASIL PENGUMUMAN</div>
+                            <form action="{{ route('pengumuman.index') }}" method="get">
+                                @csrf
+                                <div class="input-group mb-3 px-5">
+                                    <input type="text" class="form-control" id="nisn" name="nisn"
+                                        aria-describedby="basic-addon3" placeholder="Masukkan 10 digit NISN anda"
+                                        required>
+                                </div>
+                                <button class="btn btn-primary mt-2">LIHAT HASIL PENGUMUMAN</button>
+                            </form>
                         </div>
                     </div>
                 </div>
