@@ -44,7 +44,7 @@
                 </thead>
                 <tbody>
                     @forelse ($siswas as $siswa)
-                        <tr style='white-space: nowrap'>
+                        <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $siswa->nama }}</td>
                             <td>{{ $siswa->tempat_lahir }}, {{ $siswa->tanggal_lahir }}</td>

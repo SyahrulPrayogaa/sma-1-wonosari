@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Siswa;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class PengumumanController extends Controller
 {
@@ -26,6 +27,7 @@ class PengumumanController extends Controller
             return view('pengumuman.index', ['nisn' => $nisn, 'siswa' => $siswa]);
             // return "data tidak ditemukan";
         } else {
+            Alert::error('Data Tidak Ditemukan');
             return view('landing-page');
         }
     }

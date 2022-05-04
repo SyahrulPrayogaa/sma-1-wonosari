@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\MataPelajaran;
 use App\Models\Siswa;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class SiswaController extends Controller
 {
@@ -51,6 +52,7 @@ class SiswaController extends Controller
             $siswa->matapelajarans()->attach($lintasIps);
         }
 
+        Alert::success('Data Berhasil Ditambahkan');
         return redirect()->route('siswa.index');
     }
 
@@ -80,12 +82,14 @@ class SiswaController extends Controller
         ]);
 
         Siswa::where('id', $siswa->id)->update($validateData);
+        Alert::success('Data Berhasil Diubah');
         return redirect()->route('siswa.index');
     }
 
     public function destroy(Siswa $siswa)
     {
         $siswa->delete();
+        Alert::success('Data Berhasil Dihapus');
         return redirect()->route('siswa.index')->with('pesan', "Hapus data $siswa->nama berhasil");
     }
 
