@@ -12,6 +12,6 @@ class MataPelajaran extends Model
 
     public function siswas()
     {
-        return $this->belongsToMany('App\models\Siswa')->withPivot('nilai');
+        return $this->belongsToMany('App\Models\Siswa')->withPivot('nilai');
     }
 }

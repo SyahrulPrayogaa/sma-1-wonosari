@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Siswa;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\DB;
 
 class PengumumanController extends Controller
 {
@@ -23,8 +24,9 @@ class PengumumanController extends Controller
                 $id = $res->id;
             }
 
+            $status = DB::select('SELECT * FROM pengumuman');
             $siswa = Siswa::where('id', $id)->first();
-            return view('pengumuman.index', ['nisn' => $nisn, 'siswa' => $siswa]);
+            return view('pengumuman.index', ['nisn' => $nisn, 'siswa' => $siswa, 'status' => $status]);
             // return "data tidak ditemukan";
         } else {
             Alert::error('Data Tidak Ditemukan');

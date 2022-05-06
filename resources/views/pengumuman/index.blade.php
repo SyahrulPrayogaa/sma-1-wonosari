@@ -45,7 +45,7 @@
                         <tr>
                             <th style="width: 250px">Nama</th>
                             <td style="width: 10px">:</td>
-                            <td>{{ $siswa->nama }}</td>
+                            <td class="text-uppercase">{{ $siswa->nama }}</td>
                         </tr>
                         <tr>
                             <th>Tempat, Tanggal Lahir</th>
@@ -65,8 +65,10 @@
                     </tbody>
                 </table>
                 <div class="text-center">
-                    <h6>Selamat Anda dinyatakan</h6>
-                    <h1 class="font-weight-bolder">LULUS</h1>
+                    @foreach ($status as $stat)
+                        <h6>{{ $stat->kalimat }}</h6>
+                        <h1 class="font-weight-bolder text-uppercase">{{ $stat->status }}</h1>
+                    @endforeach
                 </div>
             </div>
         </div>
