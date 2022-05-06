@@ -36,7 +36,8 @@
                 </tbody>
             </table>
             <div class="btn-group">
-                <a href="{{ route('siswa.nilai.edit', ['siswa' => $siswa->id]) }}" class="btn btn-primary mb-3">Edit Nilai</a>
+                <a href="{{ route('siswa.nilai.edit', ['siswa' => $siswa->id]) }}" class="btn btn-primary mb-3">Edit
+                    Nilai</a>
             </div>
             <table class="table table-bordered">
                 <thead>
@@ -61,7 +62,7 @@
                             <tr>
                                 <td>{{ $i++ }}</td>
                                 <td>{{ $mapel->mata_pelajaran }}</td>
-                                <td>{{ $mapel->pivot->nilai }}</td>
+                                <td class="text-center text-bold">{{ $mapel->pivot->nilai }}</td>
                             </tr>
                         @endif
                     @endforeach
@@ -79,7 +80,7 @@
                             <tr>
                                 <td>{{ $j++ }}</td>
                                 <td>{{ $mapel->mata_pelajaran }}</td>
-                                <td>{{ $mapel->pivot->nilai }}</td>
+                                <td class="text-center text-bold">{{ $mapel->pivot->nilai }}</td>
                             </tr>
                         @endif
                     @endforeach
@@ -91,7 +92,7 @@
                             <tr>
                                 <td>{{ $k++ }}</td>
                                 <td>{{ $mapel->mata_pelajaran }}</td>
-                                <td>{{ $mapel->pivot->nilai }}</td>
+                                <td class="text-center text-bold">{{ $mapel->pivot->nilai }}</td>
                             </tr>
                         @endif
                     @endforeach
@@ -104,11 +105,16 @@
                             <tr>
                                 <td></td>
                                 <td>{{ $mapel->mata_pelajaran }}</td>
-                                <td>{{ $mapel->pivot->nilai }}</td>
+                                <td class="text-center text-bold">{{ $mapel->pivot->nilai }}</td>
                             </tr>
                         @endif
                     @endforeach
+                    <tr>
+                        <td colspan="2" class="text-center text-bold">Nilai Rata-Rata</td>
+                        <td class="text-bold text-center">{{ $average }} </td>
+                    </tr>
                 </tbody>
+
             </table>
         </div>
 

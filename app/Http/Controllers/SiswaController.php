@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\MataPelajaran;
 use App\Models\Siswa;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class SiswaController extends Controller
@@ -102,7 +103,12 @@ class SiswaController extends Controller
     public function nilai(Siswa $siswa)
     {
         $siswa = Siswa::where('id', $siswa->id)->first();
-        return view('admin.siswa.nilai.index', ['siswa' => $siswa]);
+        foreach ($siswa as $s) {
+            $id = $siswa->id;
+        }
+        // fungsi round digunakan untuk mengambil jumlah angka dibelakang koma
+        $average = round(DB::table('mata_pelajaran_siswa')->where('siswa_id', $id)->avg('nilai'), 2);
+        return view('admin.siswa.nilai.index', ['siswa' => $siswa, 'average' => $average]);
     }
 
     public function editNilai(Siswa $siswa)

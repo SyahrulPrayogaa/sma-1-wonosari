@@ -145,6 +145,10 @@
                                 </tr>
                             @endif
                         @endforeach
+                        <tr>
+                            <td colspan="2" class="text-center text-bold">Nilai Rata-Rata</td>
+                            <td class="text-bold text-center">{{ $average }} </td>
+                        </tr>
                     </tbody>
                 </table>
             </div>

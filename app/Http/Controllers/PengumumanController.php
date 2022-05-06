@@ -26,7 +26,8 @@ class PengumumanController extends Controller
 
             $status = DB::select('SELECT * FROM pengumuman');
             $siswa = Siswa::where('id', $id)->first();
-            return view('pengumuman.index', ['nisn' => $nisn, 'siswa' => $siswa, 'status' => $status]);
+            $average = round(DB::table('mata_pelajaran_siswa')->where('siswa_id', $id)->avg('nilai'), 2);
+            return view('pengumuman.index', ['nisn' => $nisn, 'siswa' => $siswa, 'status' => $status, 'average' => $average]);
             // return "data tidak ditemukan";
         } else {
             Alert::error('Data Tidak Ditemukan');
