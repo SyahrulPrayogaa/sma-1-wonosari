@@ -46,7 +46,7 @@
                     @forelse ($siswas as $siswa)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ $siswa->nama }}</td>
+                            <td class="text-capitalize">{{ $siswa->nama }}</td>
                             <td>{{ $siswa->tempat_lahir }}, {{ $siswa->tanggal_lahir }}</td>
                             <td>{{ $siswa->jenis_kelamin == 'P' ? 'Perempuan' : 'Laki-laki' }}</td>
                             <td>{{ $siswa->nis }}</td>

@@ -16,7 +16,7 @@
                     <tr>
                         <th style="width: 250px">Nama</th>
                         <td style="width: 10px">:</td>
-                        <td>{{ $siswa->nama }}</td>
+                        <td class="text-capitalize">{{ $siswa->nama }}</td>
                     </tr>
                     <tr>
                         <th>Tempat, Tanggal Lahir</th>
