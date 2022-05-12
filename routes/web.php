@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MataPelajaranController;
 use App\Http\Controllers\PengumumanController;
 use App\Http\Controllers\SiswaController;
@@ -21,6 +22,9 @@ Route::get('/', function () {
 });
 Route::get('/pengumuman', [PengumumanController::class, 'index'])->name('pengumuman.index');
 
+// Login Route
+Route::GET('/login', [LoginController::class, 'index'])->name('login.index');
+Route::POST('/login', [LoginController::class, 'authenticate'])->name('login.auth');
 
 Route::get('/admin', function () {
     return view('dashboard');
