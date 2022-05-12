@@ -27,21 +27,24 @@ Route::GET('/login', [LoginController::class, 'index'])->name('login');
 Route::POST('/login', [LoginController::class, 'authenticate'])->name('login.auth');
 Route::GET('/logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::get('/admin', function () {
-    return view('dashboard');
-})->name('admin')->middleware('login');
 
-Route::get('/admin/daftar-siswa', [SiswaController::class, 'index'])->name('siswa.index')->middleware('login');
-Route::get('/admin/daftar-siswa/create', [SiswaController::class, 'create'])->name('siswa.create');
-Route::post('/admin/daftar-siswa', [SiswaController::class, 'store'])->name('siswa.store');
-Route::get('/admin/daftar-siswa/{siswa}/edit', [SiswaController::class, 'edit'])->name('siswa.edit');
-Route::patch('/admin/daftar-siswa/{siswa}', [SiswaController::class, 'update'])->name('siswa.update');
-Route::delete('/admin/daftar-siswa/{siswa}', [SiswaController::class, 'destroy'])->name('siswa.destroy');
+Route::middleware('login')->group(function () {
+    Route::get('/admin', function () {
+        return view('dashboard');
+    })->name('admin');
 
-Route::get('/admin/daftar-siswa/cari', [SiswaController::class, 'search'])->name('siswa.search');
+    Route::get('/admin/daftar-siswa', [SiswaController::class, 'index'])->name('siswa.index');
+    Route::get('/admin/daftar-siswa/create', [SiswaController::class, 'create'])->name('siswa.create');
+    Route::post('/admin/daftar-siswa', [SiswaController::class, 'store'])->name('siswa.store');
+    Route::get('/admin/daftar-siswa/{siswa}/edit', [SiswaController::class, 'edit'])->name('siswa.edit');
+    Route::patch('/admin/daftar-siswa/{siswa}', [SiswaController::class, 'update'])->name('siswa.update');
+    Route::delete('/admin/daftar-siswa/{siswa}', [SiswaController::class, 'destroy'])->name('siswa.destroy');
 
-Route::get('/admin/daftar-siswa/{siswa}/nilai', [SiswaController::class, 'nilai'])->name('siswa.nilai.index');
-Route::get('/admin/daftar-siswa/{siswa}/nilai/edit', [SiswaController::class, 'editNilai'])->name('siswa.nilai.edit');
-Route::patch('/admin/daftar-siswa/{siswa}/nilai', [SiswaController::class, 'updateNilai'])->name('siswa.nilai.update');
+    Route::get('/admin/daftar-siswa/cari', [SiswaController::class, 'search'])->name('siswa.search');
 
-Route::get('/admin/mata-pelajaran', [MataPelajaranController::class, 'index'])->name('mata-pelajaran');
+    Route::get('/admin/daftar-siswa/{siswa}/nilai', [SiswaController::class, 'nilai'])->name('siswa.nilai.index');
+    Route::get('/admin/daftar-siswa/{siswa}/nilai/edit', [SiswaController::class, 'editNilai'])->name('siswa.nilai.edit');
+    Route::patch('/admin/daftar-siswa/{siswa}/nilai', [SiswaController::class, 'updateNilai'])->name('siswa.nilai.update');
+
+    Route::get('/admin/mata-pelajaran', [MataPelajaranController::class, 'index'])->name('mata-pelajaran');
+});
