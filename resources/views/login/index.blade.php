@@ -19,12 +19,24 @@
         <h1 class="h5 mb-3 font-weight-normal">Selamat Datang di Sistem Kurikulum <br> <span class="h4 font-weight-bold">
                 SMAN 1 Wonosari</span></h1>
         <h1 class="h5 mb-3 font-weight-normal">Silahkan Login</h1>
+        @if (session()->has('pesan'))
+            <div class="alert alert-danger text-left">
+                {{ session()->get('pesan') }}
+            </div>
+        @endif
         <label for="username" class="sr-only">Username</label>
         <input type="text" id="inputUsername" name="username" class="form-control" placeholder="User Name" required
-            autofocus>
+            autofocus value="{{ old('username') }}">
+        @error('username')
+            <div class="text-danger text-left">{{ $message }}</div>
+        @enderror
         <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+        <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password"
+            required>
+        @error('password')
+            <div class="text-danger text-left">{{ $message }}</div>
+        @enderror
+        <button class="btn btn-lg btn-primary btn-block mt-3" type="submit">Login</button>
         <p class="mt-5 mb-3 text-muted">SMAN 1 Wonosari &copy; 2022</p>
     </form>
 </body>

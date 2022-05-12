@@ -23,14 +23,15 @@ Route::get('/', function () {
 Route::get('/pengumuman', [PengumumanController::class, 'index'])->name('pengumuman.index');
 
 // Login Route
-Route::GET('/login', [LoginController::class, 'index'])->name('login.index');
+Route::GET('/login', [LoginController::class, 'index'])->name('login');
 Route::POST('/login', [LoginController::class, 'authenticate'])->name('login.auth');
+Route::GET('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::get('/admin', function () {
     return view('dashboard');
-});
+})->name('admin')->middleware('login');
 
-Route::get('/admin/daftar-siswa', [SiswaController::class, 'index'])->name('siswa.index');
+Route::get('/admin/daftar-siswa', [SiswaController::class, 'index'])->name('siswa.index')->middleware('login');
 Route::get('/admin/daftar-siswa/create', [SiswaController::class, 'create'])->name('siswa.create');
 Route::post('/admin/daftar-siswa', [SiswaController::class, 'store'])->name('siswa.store');
 Route::get('/admin/daftar-siswa/{siswa}/edit', [SiswaController::class, 'edit'])->name('siswa.edit');
