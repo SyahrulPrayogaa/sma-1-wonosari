@@ -130,7 +130,7 @@
         </li> --}}
         <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
-                Selamat Datang, Admin
+                Selamat Datang, <span class="text-capitalize">{{ session('username') }}</span>
                 <img src="{{ asset('img/Logo_Kemendikbud.svg') }}" alt="user logo" srcset=""
                     class="border border-dark rounded-circle ml-2" width="25" height="25">
                 <i class="right fas fa-angle-down"></i>
@@ -140,7 +140,7 @@
                     Pengaturan
                 </a>
                 <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item">
+                <a href="{{ route('logout') }}" class="dropdown-item">
                     logout
                 </a>
                 <div class="dropdown-divider"></div>
