@@ -29,9 +29,9 @@ Route::GET('/logout', [LoginController::class, 'logout'])->name('logout');
 
 
 Route::middleware('login')->group(function () {
-    Route::get('/admin', function () {
-        return view('dashboard');
-    })->name('admin');
+    // Route::get('/admin', function () {
+    //     return view('dashboard');
+    // })->name('admin');
 
     Route::get('/admin/daftar-siswa', [SiswaController::class, 'index'])->name('siswa.index');
     Route::get('/admin/daftar-siswa/create', [SiswaController::class, 'create'])->name('siswa.create');

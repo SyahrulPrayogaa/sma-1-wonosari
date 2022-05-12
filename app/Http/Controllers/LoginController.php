@@ -27,7 +27,7 @@ class LoginController extends Controller
         } else {
             if (Hash::check($request->password, $user->password)) {
                 session(['username' => $request->username]);
-                return redirect()->route('admin');
+                return redirect()->route('siswa.index');
             } else {
                 return back()->withInput()->with('pesan', 'Maaf Akun Tidak Ditemukan');
             }
