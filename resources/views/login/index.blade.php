@@ -16,6 +16,7 @@
     <form class="form-signin" action="{{ route('login.auth') }}" method="POST">
         @csrf
         <img class="mb-4" src="{{ asset('img/Logo_Kemendikbud.svg') }}" alt="" width="72" height="72">
+        <img class="mb-4" src="{{ asset('img/sma.png') }}" alt="" width="72" height="72">
         <h1 class="h5 mb-3 font-weight-normal">Selamat Datang di Sistem Kurikulum <br> <span class="h4 font-weight-bold">
                 SMAN 1 Wonosari</span></h1>
         <h1 class="h5 mb-3 font-weight-normal">Silahkan Login</h1>
