@@ -37,6 +37,6 @@ class LoginController extends Controller
     public function logout()
     {
         session()->forget('username');
-        return redirect('login')->with('pesan', 'Logout Berhasil');
+        return redirect()->route('login')->with('pesan', 'Logout Berhasil');
     }
 }
