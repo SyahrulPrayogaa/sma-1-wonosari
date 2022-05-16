@@ -17,14 +17,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('landing-page');
-});
-Route::get('/pengumuman', [PengumumanController::class, 'index'])->name('pengumuman.index');
+// Route::get('/', function () {
+//     return view('landing-page');
+// });
+// Route::get('/pengumuman', [PengumumanController::class, 'index'])->name('pengumuman.index');
 
 // Login Route
-Route::GET('/login', [LoginController::class, 'index'])->name('login');
-Route::POST('/login', [LoginController::class, 'authenticate'])->name('login.auth');
+Route::GET('/', [LoginController::class, 'index'])->name('login');
+Route::POST('/', [LoginController::class, 'authenticate'])->name('login.auth');
 Route::GET('/logout', [LoginController::class, 'logout'])->name('logout');
 
 
